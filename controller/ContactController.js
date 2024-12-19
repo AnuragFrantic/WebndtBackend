@@ -5,7 +5,7 @@ exports.createContact = async (req, res) => {
     try {
         const data = req.body; // Dynamically take fields from request body
         if (req.file) {
-            data.image = req.file.path; // If an image is uploaded, save the path
+            data.image = req.file.path;
         }
 
         const contact = new Contact(data);

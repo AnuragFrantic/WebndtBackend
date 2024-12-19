@@ -9,6 +9,7 @@ const { createBanner, getAllBanners, getBannerById, updateBanner, deleteBanner }
 const { createCleint, getAllCleints, getCleintById, updateCleint, deleteCleint } = require('../controller/CleintController');
 const { createSocial, getAllSocials, getSocialById, updateSocial, deleteSocial } = require('../controller/SocialController');
 const { createContact, getAllContacts, getContactById, updateContact, deleteContact } = require('../controller/ContactController');
+const { createAbout, getAllAboutUs, updateAbout, deleteAbout } = require('../controller/AboutusController');
 
 const router = express.Router();
 
@@ -129,6 +130,15 @@ router.get('/contact', getAllContacts);
 router.get('/contact/:id', getContactById);
 router.put('/contact/:id', upload.single('image'), updateContact);
 router.delete('/contact/:id', deleteContact)
+
+
+
+// about us
+
+router.post('/about', upload.single('image'), createAbout)
+router.get('/about', getAllAboutUs)
+router.put('/about/:id', upload.single('image'), updateAbout)
+router.delete('/about/:id', deleteAbout)
 
 
 module.exports = router;
