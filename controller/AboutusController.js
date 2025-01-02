@@ -3,12 +3,10 @@ const AboutUs = require('../models/AboutUs')
 
 exports.createAbout = async (req, res) => {
     try {
-        const data = req.body; // Dynamically take fields from request body
-
+        const data = req.body; 
         if (req.file) {
             data.image = req.file.path;
         }
-
         const aboutus = new AboutUs(data);
         await aboutus.save();
 
