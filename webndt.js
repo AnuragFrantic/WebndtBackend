@@ -52,9 +52,18 @@ let filePath = path.join(__dirname, './cert.pem');
 const certificate = fs.readFileSync(filePath, 'utf8');
 let filePath1 = path.join(__dirname, './privatekey.pem');
 const pvtkey = fs.readFileSync(filePath1, 'utf8');
+
+
+
+
+// const options = {
+//     key: pvtkey,
+//     cert: certificate,
+// };
+
 const options = {
-    key: pvtkey,
-    cert: certificate,
+    cert: fs.readFileSync('/etc/letsencrypt/live/webndtpl.com/fullchain.pem', 'utf-8'),
+    key: fs.readFileSync('/etc/letsencrypt/live/webndtpl.com/cert.pem', 'utf-8'),
 };
 https.createServer(options, app)
     .listen(port, function (req, res) {
